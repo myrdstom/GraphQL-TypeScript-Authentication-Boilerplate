@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+/config
+
+
+# testing
+/coverage
+
+# misc
+yarn.lock
+yarn-error.log
+package-lock.json
+
+# IDE settings
+.idea
