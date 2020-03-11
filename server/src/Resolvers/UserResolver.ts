@@ -10,9 +10,10 @@ import {
 } from 'type-graphql';
 import { hash, compare } from 'bcryptjs';
 import { User } from '../entity/User';
-import { MyContext } from '../MyContext';
+import { MyContext } from '../helpers/MyContext';
 import { createAccessToken, createRefreshToken } from '../Auth';
 import {isAuth} from "../middleware/isAuth";
+import {sendRefreshToken} from "../helpers/sendRefreshToken";
 
 @ObjectType()
 class LoginResponse {
@@ -85,15 +86,11 @@ export class UserResolver {
 
 
         // login successful
-        //'jid is a generic name. can be anything
-        res.cookie(
-            'jid',
-            createRefreshToken(user),
-            { httpOnly: true }
-        );
-
+        //'jid' is a generic name. can be anything
+        sendRefreshToken(res, createRefreshToken(user));
         return {
             accessToken: createAccessToken(user),
         };
     }
+
 }
