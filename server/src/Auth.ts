@@ -11,5 +11,9 @@ export const createAccessToken = (user: User) => {
 };
 
 export const createRefreshToken = (user: User) => {
-    return sign({ userId: user.id }, `${cookieSecret}`, { expiresIn: '7d' });
+    return sign(
+        { userId: user.id, tokenVersion: user.tokenVersion },
+        `${cookieSecret}`,
+        { expiresIn: '7d' }
+    );
 };
