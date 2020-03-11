@@ -15,4 +15,7 @@ export class User extends  BaseEntity{
     @Column('text') // It's usually infered so it can be blank as above
     password: string;
 
+    @Column('int', {default: 0})
+    tokenVersion: number;
+
 }
