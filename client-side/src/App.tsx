@@ -16,6 +16,7 @@ const App: React.FC = () => {
   console.log(data,'the data')
   return (
     <div>{JSON.stringify(data)}</div>
+
   );
 }
 
